@@ -1,39 +1,58 @@
 import React,{useEffect,useState} from 'react'
-import { Text, View } from './defaults/Themed'
-import { getItems } from '@/src/sanityessentials/sanity_utils'
+import { StatusBar } from 'expo-status-bar'
+import { SafeAreaView, Text, View,Image,ImageBackground } from 'react-native'
+import sampleProducts from '../src/utils/db'
+import client from '@/src/sanityessentials/sanity'
 import { Item } from '@/typings'
-type Props = {}
-
-const ItemList = (props: Props) => {
+//type Props = {}
+//merely adding a new line in tsconfig got rid iof the errors
+const ItemList = () => {
     const [items, setItems]:any=useState([]);
     
     const loadItems=async()=>{
         //
-        getItems().then((data: Item[]) => { 
+    /*await client.fetch(`*[_type == 'item']{ name, description
+
+    }`).then((data: any) => { 
     
-          console.log(data)
+          //console.log(data)
         setItems((data))
-      })}
+      }).catch(console.error)*/
+      setItems(sampleProducts)
+    }
     
     useEffect(()=>{
       loadItems();
     },[])
+    const image = {uri: 'https://legacy.reactjs.org/logo-og.png'};
   return (
-    <View>
+     <View>
+      <StatusBar />
+     
       {
-        items? <View className='w-full h-full relative bg-gray-200'>
-        <Text className='text-black font-bold'>item lkist starts here</Text>
-        {
+         <View className='w-full h-full relative bg-gray-200'>
+           <ImageBackground source={image} resizeMode="cover">
+           <Text className='text-white font-bold'>item lkist starts here</Text>
+        { 
           items?.map((item:Item)=>{
-            return (<View className='bg-yellow-200' key={item.slug}>
-                  <Text className='text-center text-ellipsis text-black'>{item.name}</Text>
+            return (<View className='bg-yellow-200 m-12' key={item.name}>
+                  <Text key={item.name} className='text-center text-black'>{item.name}</Text>
+                  
             </View>)
             ;
           })
         }
-        </View> :<></>
+           </ImageBackground>
+           <View className='h-full w-full rounded-3xl bg-yellow-300'>
+            {
+
+            }
+           </View>
+       
+        </View> 
       }
     </View>
+   
   )
 }
 

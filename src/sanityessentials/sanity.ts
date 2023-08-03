@@ -1,14 +1,19 @@
-import {createClient} from '@sanity/client';
+//const { createClient} =require('@sanity/client')
+import  {createClient}  from '@sanity/client';
+
 import imageBuilder from '@sanity/image-url';
 
-const client = createClient({
+ const config = 
+    {
     projectId: 'f32l6se5',
     dataset: 'production',
-    useCdn: false,
-    apiVersion: '2023-06-19',
+    useCdn: true,
+    apiVersion: '2021-10-21',
+    //token:add token for delwetions and creations
 
 
-})
+}
+ const client:any = createClient(config)
 const builder = imageBuilder(client);
 
 export const urlFor = (source:any)=> builder.image(source);

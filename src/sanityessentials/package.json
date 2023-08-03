@@ -1,5 +1,5 @@
 {
-  "name": "essentials",
+  "name": "sanityessentials",
   "private": true,
   "version": "1.0.0",
   "main": "package.json",
@@ -15,15 +15,16 @@
     "sanity"
   ],
   "dependencies": {
-    "@sanity/vision": "^3.14.4",
+    "@sanity/vision": "^3.14.5",
+    "expo-status-bar": "^1.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0",
-    "sanity": "^3.14.4",
+    "sanity": "^3.8.3",
     "styled-components": "^5.3.9"
   },
   "devDependencies": {
-    "@sanity/eslint-config-studio": "^2.0.4",
+    "@sanity/eslint-config-studio": "^3.0.0",
     "@types/react": "^18.0.25",
     "@types/styled-components": "^5.1.26",
     "eslint": "^8.6.0",

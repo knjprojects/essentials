@@ -3,6 +3,7 @@ import './globals.css'
 import EditScreenInfo from '../../components/defaults/EditScreenInfo';
 import { Text, View } from '../../components/defaults/Themed';
 import { Link } from 'expo-router';
+
 export default function TabOneScreen() {
   return (
     <View className='bg-gray-300'>

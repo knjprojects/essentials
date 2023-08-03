@@ -6,7 +6,7 @@ import { Dimensions, Text, View,ScrollView,TextInput} from 'react-native';
 import ReanimatedCarosel from '../../components/ReanimatedCarosel';
 import { useCartStore } from '@/src/zustand/cart.zustand.store';
 import ItemList from '@/components/ItemList';
-const Experience=() =>{
+export default function Experience(){
     const zustandCart=useCartStore((state)=>state.tempOrder)
     const [featuredCategories, setFeaturedCategories] = useState([])
     const navigation = useNavigation();
@@ -19,7 +19,7 @@ const Experience=() =>{
         })*/
     },[])
     return (
-        <View className=''>
+        <View className='mt-6'>
               {/* search bar */}
         <View className="flex-row items-center space-x-2 px-4 pb-2 ">
             <View className="flex-row flex-1 items-center p-3 rounded-full border border-gray-300">
@@ -44,7 +44,7 @@ const Experience=() =>{
             paddingBottom: 50
         }}
     >
-       <ItemList />
+       {<ItemList />}
        
         
 
@@ -56,4 +56,4 @@ const Experience=() =>{
     );
 }
 
-export default Experience;
+//export default Experience;
