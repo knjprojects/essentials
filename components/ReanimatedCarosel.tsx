@@ -3,6 +3,7 @@ import { Dimensions, Text, View } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 
 const ReanimatedCarosel=() =>{
+    const images=['https://assets.publishing.service.gov.uk/government/uploads/system/uploads/image_data/file/176455/s960_Football_gov.uk.jpg',''];
     const width = Dimensions.get('window').width;
     return (
         <View style={{ flex: 1 }}>
@@ -27,6 +28,7 @@ const ReanimatedCarosel=() =>{
                         <Text style={{ textAlign: 'center', fontSize: 30 }}>
                             {index}
                         </Text>
+
                     </View>
                 )}
             />

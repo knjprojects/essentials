@@ -1,8 +1,13 @@
 import { initializeApp,getApps } from "firebase/app";
+
+//these work when using app as parameter, then usen the return value as paramters for our react-firebase-hooks, i think
+import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
+import { getFirestore } from "firebase/firestore";
+
 import {
   
   GoogleAuthProvider,
-  getAuth,
   signInWithPopup,
   signInWithRedirect,
   signInWithEmailAndPassword,
@@ -10,19 +15,26 @@ import {
   sendPasswordResetEmail,
   signOut,
 } from "firebase/auth";
-import { getApp } from "firebase/app";
-import { getStorage } from "firebase/storage";
+
+
 import {
   
-  getFirestore,
-  query,
+ 
+  /*query,
   getDocs,
   collection,
   where,
-  addDoc
+  addDoc*/
 } from "firebase/firestore";
+import { initializeAuth} from "firebase/auth";
 
+import {PersistGate,configurePersist} from 'zustand-persist'
+import AsyncStorage from "@react-native-community/async-storage";
 
+const { persist, purge } = configurePersist({
+  storage: AsyncStorage,//localStorage, // use `AsyncStorage` in react native
+  rootKey: 'root', // optional, default value is `root`
+})
 export const firebaseConfig = {
     //change these to expo constants
     apiKey: "AIzaSyBKwiPzl5aHfkWvyPyABaL2Cz1i-kBsoDU",
@@ -34,12 +46,13 @@ export const firebaseConfig = {
     measurementId: "G-VHCJBPEF0Q"
 };
 
-
-export const app=getApps().length ===0?initializeApp(firebaseConfig,'essentials'):getApps()[0];
-export const storage = getStorage(app);
-export const auth = getAuth(app);
-export const db:any = getFirestore(app)
-  const readUserData = async (userId:any) => {
+//initializeApp(firebaseConfig)
+export const app=getApps().length==1? getApps()[0] : initializeApp(firebaseConfig,'essentials')
+//const analytics = getAnalytics(app);
+export const auth =initializeAuth(app, {
+  
+});
+  /*const readUserData = async (userId:any) => {
   try {
     const userRef = db.collection('users').doc(userId);
     const userData = await userRef.get();
@@ -56,7 +69,7 @@ export const db:any = getFirestore(app)
   };
 
 
-
+*/
 
 //firebase.auth().useDeviceLanguage();
 const googleProvider = new GoogleAuthProvider();
@@ -85,7 +98,7 @@ googleProvider.addScope('https://www.googleapis.com/auth/contacts.readonly');
   });*/
 
 
-const signInWithGoogle = async () => {
+/*const signInWithGoogle = async () => {
   try {
   const res = await signInWithPopup(auth, googleProvider);
   const user = res.user;
@@ -106,7 +119,7 @@ const signInWithGoogle = async () => {
   alert(err.message);
   }
 };
-
+*/
 
 
 

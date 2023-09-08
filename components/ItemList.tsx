@@ -8,7 +8,14 @@ import { Item } from '@/typings'
 //merely adding a new line in tsconfig got rid iof the errors
 const ItemList = () => {
     const [items, setItems]:any=useState([]);
-    
+    //const [sanityItems,setItems]:any=useState([])
+
+    const loadSanityData=async()=>{
+        /*getItems().then((data:Item[])=>{
+            setItems(data)
+        })*/
+        
+    }
     const loadItems=async()=>{
         //
     /*await client.fetch(`*[_type == 'item']{ name, description
@@ -23,6 +30,7 @@ const ItemList = () => {
     
     useEffect(()=>{
       loadItems();
+      //loadSanityData();
     },[])
     const image = {uri: 'https://legacy.reactjs.org/logo-og.png'};
   return (
@@ -51,6 +59,15 @@ const ItemList = () => {
        
         </View> 
       }
+       {/*
+                    sanityItems && sanityItems?.map((item:Item)=>{
+                        return(
+                            <View key={item.slug}>
+                                <Text key={item.name}></Text>
+                            </View>
+                        );
+                    })*/
+                  }
     </View>
    
   )

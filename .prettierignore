@@ -1,0 +1,5 @@
+// .prettierignore
+.expo
+node_modules
+package-lock.json
+docker*

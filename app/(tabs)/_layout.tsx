@@ -1,9 +1,11 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
 import { Pressable, useColorScheme } from 'react-native';
-import { useAuth } from '@/src/hooks/useAuth';
-import Colors from '@/constants/Colors';
 
+import Colors from '@/constants/Colors';
+import { initializeApp } from 'firebase/app';
+import { firebaseConfig,app } from '@/src/utils/firebase';
+import { getAuth } from 'firebase/auth';
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
@@ -14,16 +16,21 @@ function TabBarIcon(props: {
   return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
 }
 
+
+import { GluestackUIProvider, Text, Box, config } from "@gluestack-ui/react"
+import Providers from '@/components/Providers';
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  
+  const auth = getAuth(app)
+  //useAuth();
 
-  const {user} =useAuth();
-
-  return user? (
-    <Tabs
+  return (
+    <Providers> <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
       }}>
+        {/*
       <Tabs.Screen
         name="index"
         options={{
@@ -44,7 +51,7 @@ export default function TabLayout() {
             </Link>
           ),
         }}
-      />
+      />*/}
       <Tabs.Screen
         name="two"
         options={{
@@ -60,7 +67,10 @@ export default function TabLayout() {
         }}
       />
     </Tabs>
-  ) : <></>
+    <Text className='fixed bottom-0 text-center'>yo what the fuck</Text></Providers>
+   
+   
+  ) 
 }
 
 /**<Tabs

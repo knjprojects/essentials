@@ -5,21 +5,13 @@
   .view{
     @apply align-middle text-center 
   }
-  
-    .icon{
-        @apply hidden xl:inline-flex p-2 h-10 w-10 
-        bg-purple-100 rounded-full cursor-pointer
-        shadow-sm highlight
-    }
     .surround{
       @apply rounded-xl shadow-xl justify-center shadow-red-500 border-red-500 border-x-2 border-y-2 dark:border-yellow-300 dark:shadow-yellow-200
     }
     .pad{
       @apply xl:px-20 lg:px-16 md:px-14 sm:px-10
     }
-    .hovers{
-        @apply hover:scale-95 hover:shadow-xl
-    }
+  
     .yellow-black-text{
       @apply dark:text-yellow-300 text-black
     }
@@ -46,10 +38,7 @@
     }
  
 
-    .highlight{
-        @apply hovers hover:text-blue-400 hover:bg-white shadow-blue-300
-    }
-    
+  
     .headericon{
         @apply justify-center h-5 group-hover:text-blue-400 text-center
      text-gray-500 md:h-5

@@ -17,3 +17,7 @@ export type Dish = {
     description:string
 
 }
+export type FirebaseStorageImage={
+    downloadUrl:string,
+    metadata:any
+}
