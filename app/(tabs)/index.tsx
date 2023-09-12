@@ -1,12 +1,12 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet,Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import './globals.css'
-import EditScreenInfo from '../../components/defaults/EditScreenInfo';
-import { Text, View } from '../../components/defaults/Themed';
+
 import { Link } from 'expo-router';
 import HamburgerMenu from '@/components/Hamburger';
 import ReanimatedCarosel from '@/components/ReanimatedCarosel';
 import HomeScreen from '@/components/HomeScreen';
+import Player from '@/components/Player';
 export default function TabOneScreen() {
   return (
     <View className='bg-gray-300'>
@@ -21,7 +21,7 @@ export default function TabOneScreen() {
       </Link>
       <ScrollView>
       <Text style={styles.title}>Home</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <View style={styles.separator}  />
       <HamburgerMenu />
       <View className='h-32 w-32 bg-yellow-400'>
         <Text>yo</Text>
@@ -29,7 +29,7 @@ export default function TabOneScreen() {
       <ReanimatedCarosel/>
       <HomeScreen />
       <Text>Another screen</Text>
-     
+      <Player />
       </ScrollView>
       
       
@@ -53,3 +53,75 @@ const styles = StyleSheet.create({
     width: '80%',
   },
 });
+/*
+ <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+      }}>
+        {
+          /**<Tabs
+  screenOptions={{
+    tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+  }}>
+  <Tabs.Screen
+    name="login"
+    options={{
+      title: 'login',
+      tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+      headerRight: () => (
+        <Link href="/modal" asChild>
+          <Pressable>
+            {({ pressed }) => (
+              <FontAwesome
+                name="info-circle"
+                size={25}
+                color={Colors[colorScheme ?? 'light'].text}
+                style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+              />
+            )}
+          </Pressable>
+        </Link>
+      ),
+    }}
+  />
+  
+  
+</Tabs> */
+        /*
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: 'Tab One',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          headerRight: () => (
+            <Link href="/modal" asChild>
+              <Pressable>
+                {({ pressed }) => (
+                  <FontAwesome
+                    name="info-circle"
+                    size={25}
+                    color={Colors[colorScheme ?? 'light'].text}
+                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                  />
+                )}
+              </Pressable>
+            </Link>
+          ),
+        }}
+      />
+      {/*
+      <Tabs.Screen
+        name="two"
+        options={{
+          title: 'Tab Two',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="experience"
+        options={{
+          title: 'Experience',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+    </Tabs> */

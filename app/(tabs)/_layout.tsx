@@ -15,89 +15,28 @@ function TabBarIcon(props: {
 }) {
   return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
 }
-
-
+import CustomHeader from '@/components/CustomHeader';
+import { Stack } from 'expo-router';
 import { GluestackUIProvider, Text, Box, config } from "@gluestack-ui/react"
-import Providers from '@/components/Providers';
-export default function TabLayout() {
+
+export default function TabLayout({children}:any) {
   const colorScheme = useColorScheme();
   
   const auth = getAuth(app)
   //useAuth();
 
   return (
-    <Providers> <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-      }}>
-        {/*
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
-        }}
-      />*/}
-      <Tabs.Screen
-        name="two"
-        options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="experience"
-        options={{
-          title: 'Experience',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-    </Tabs>
-    <Text className='fixed bottom-0 text-center'>yo what the fuck</Text></Providers>
+    <Stack>
+        <Stack.Screen name="index" options={{ headerShown: false,
+          header:()=> <CustomHeader/>
+        }} />
+        {<Stack.Screen name="experience" options={{ headerShown: false }} />}
+      </Stack>
    
+    
+    
+
    
   ) 
 }
 
-/**<Tabs
-  screenOptions={{
-    tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-  }}>
-  <Tabs.Screen
-    name="login"
-    options={{
-      title: 'login',
-      tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-      headerRight: () => (
-        <Link href="/modal" asChild>
-          <Pressable>
-            {({ pressed }) => (
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme ?? 'light'].text}
-                style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-              />
-            )}
-          </Pressable>
-        </Link>
-      ),
-    }}
-  />
-  
-  
-</Tabs> */

@@ -1,7 +1,7 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 import { useFonts } from 'expo-font';
-import { SplashScreen, Stack } from 'expo-router';
+import { SplashScreen, Stack, useNavigation } from 'expo-router';
 import { useEffect } from 'react';
 
 
@@ -20,9 +20,15 @@ SplashScreen.preventAutoHideAsync();
 import { getApps, initializeApp } from "firebase/app";
 import { firebaseConfig } from "../src/utils/firebase";
 import Providers from '@/components/Providers';
+import CustomHeader from '@/components/CustomHeader';
+import { TouchableOpacity } from 'react-native';
+import { BackwardIcon } from 'react-native-heroicons/solid';
 //if(getApps().length==0){
     initializeApp(firebaseConfig)
 //}
+
+
+
 export default function RootLayout() {
   const [loaded, error] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
@@ -49,12 +55,26 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   
-
+  const navigation=useNavigation();
   return (
     <Providers><Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        {<Stack.Screen name="(auth)" options={{ headerShown: false }} />}
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false,
+          header:()=> <CustomHeader/>
+        }} />
+        {<Stack.Screen name="(modal)/filter" 
+        options={{ headerShown: false,
+            //important!!!
+            //this changes the component from a page redirect or linbk to a modal
+          presentation: "modal",
+          headerTitle:'Filter',
+          headerShadowVisible:false,
+          headerStyle:{},
+          headerLeft:()=> (
+            <TouchableOpacity onPress={()=>{navigation.goBack()}}>
+              <BackwardIcon color={'#EF5724'} />
+            </TouchableOpacity>
+          )
+        }} />}
       </Stack></Providers>
       
     
