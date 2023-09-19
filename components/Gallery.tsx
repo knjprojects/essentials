@@ -4,6 +4,7 @@ import { listFiles } from './FirebaseMediaStorage'
 type Props = {}
 import { FirebaseStorageImage } from '@/typings'
 import { getDownloadURL, getMetadata } from 'firebase/storage'
+import OvalButton from './OvalButton'
 const Gallery = (props: Props) => {
     const [gallery,setImages]:any=useState(null)
     const [myImage,setImage]:any=useState();
@@ -24,7 +25,8 @@ const Gallery = (props: Props) => {
     },[])
 return (
     <View>
-        <Text>Gallery</Text>
+        <Text>Gallery, also testing my animated bg button</Text>
+        <OvalButton />
         <View>
         {
         gallery? gallery?.map((image:FirebaseStorageImage)=>{

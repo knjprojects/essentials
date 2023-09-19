@@ -9,11 +9,11 @@ const Player = () => {
     }
   return (
     <View className='bg-red-400'>
-        <Text className='text-black font-bold' onPress={()=>{
+       {/* <Text className='text-black font-bold' onPress={()=>{
             if(ReactPlayer.canPlay('https://www.youtube.com/watch?v=ldrd2YOQsJI'))
             {setPlaying(!isPlaying)}
         }
-            }>{isPlaying?'Pause':'Play'}</Text>
+            }>{isPlaying?'Pause':'Play React player video'}</Text>
       <ReactPlayer
         url='https://www.youtube.com/watch?v=ldrd2YOQsJI'
         controls={true}//Set to true or false to display native player controls.
@@ -27,6 +27,9 @@ const Player = () => {
         height={200}//height 
         width={300}//width
     />
+          */}
+          <Text>Now lets plat our cloud storage tracks</Text>
+          
     </View>
  );
 };
